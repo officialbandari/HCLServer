@@ -3,8 +3,8 @@ const patientService = require('../services/patientService');
 const providerService = require('../services/providerService');
 const patientDAO = require('../dao/patientDAO');
 const providerDAO = require('../dao/providerDAO');
-const { patientLoginSchema, providerLoginSchema } = require('../validations/patientValidation');
-const { providerCreateSchema: providerVal } = require('../validations/providerValidation');
+const { patientLoginSchema } = require('../validations/patientValidation');
+const { providerLoginSchema, providerCreateSchema: providerVal } = require('../validations/providerValidation');
 
 class AuthController {
   // Patient Login

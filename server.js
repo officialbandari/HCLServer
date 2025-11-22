@@ -1,15 +1,23 @@
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/.env' });
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 // Middleware
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow Vite dev server
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
     console.log('MONGO_URL:', process.env.MONGO_URL);
+    console.log('JWT_SECRET:', process.env.JWT_SECRET);
+  process.env.JWT_SECRET = "supersecretkeyforhclhealth123"
 
 // MongoDB Connection
 const connectDB = async () => {
