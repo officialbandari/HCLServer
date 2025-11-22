@@ -4,7 +4,8 @@ const reminderController = require('../controllers/reminderController');
 const { authenticateToken, requirePatient } = require('../middleware/auth');
 
 // Protect all routes with authentication - patients can manage their own reminders
-router.use(authenticateToken, requirePatient);
+router.use(authenticateToken);
+router.use(requirePatient);
 
 router.get('/', reminderController.getAllReminders);
 router.post('/', reminderController.createReminder);

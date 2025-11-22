@@ -4,7 +4,8 @@ const providerController = require('../controllers/providerController');
 const { authenticateToken, requireProvider } = require('../middleware/auth');
 
 // Protect all routes with authentication
-router.use(authenticateToken, requireProvider);
+router.use(authenticateToken);
+router.use(requireProvider);
 
 router.get('/', providerController.getAllProviders);
 router.post('/', providerController.createProvider);

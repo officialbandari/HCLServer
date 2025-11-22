@@ -4,7 +4,8 @@ const goalsController = require('../controllers/goalsController');
 const { authenticateToken, requirePatient } = require('../middleware/auth');
 
 // Protect all routes with authentication - patients can manage their own goals
-router.use(authenticateToken, requirePatient);
+router.use(authenticateToken);
+router.use(requirePatient);
 
 router.get('/', goalsController.getAllGoals);
 router.post('/', goalsController.createGoal);

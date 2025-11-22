@@ -4,7 +4,8 @@ const patientController = require('../controllers/patientController');
 const { authenticateToken, requirePatient } = require('../middleware/auth');
 
 // Protect all routes with authentication
-router.use(authenticateToken, requirePatient);
+router.use(authenticateToken);
+router.use(requirePatient);
 
 router.get('/', patientController.getAllPatients);
 router.post('/', patientController.createPatient);
