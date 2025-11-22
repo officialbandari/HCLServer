@@ -20,6 +20,9 @@ const authenticateToken = (req, res, next) => {
 
 // Middleware to check if user is patient
 const requirePatient = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({ error: 'Not authenticated.' });
+  }
   if (req.user.role !== 'Patient') {
     return res.status(403).json({ error: 'Access denied. Patient role required.' });
   }
@@ -28,6 +31,9 @@ const requirePatient = (req, res, next) => {
 
 // Middleware to check if user is provider
 const requireProvider = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({ error: 'Not authenticated.' });
+  }
   if (req.user.role !== 'Provider') {
     return res.status(403).json({ error: 'Access denied. Provider role required.' });
   }
